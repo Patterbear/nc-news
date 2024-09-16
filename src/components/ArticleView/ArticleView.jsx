@@ -1,19 +1,21 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
-import api from '../../../api';
+import { useState, useEffect } from "react";
 import Comments from './Comments';
+import { fetchArticleById } from "../../../api";
 
 const ArticleView = () => {
     const { article_id } = useParams();
     const [article, setArticle] = useState({});
 
-    api.get('/articles/' + article_id)
-    .then((response) => {
-        setArticle(response.data.article);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+    useEffect(() => {
+        fetchArticleById(article_id)
+        .then((responseArticle) => {
+            setArticle(responseArticle);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }, []);
 
     return (
         <article>

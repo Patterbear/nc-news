@@ -1,17 +1,21 @@
-import { useState } from "react";
-import api from '../../../api';
+import { useState, useEffect } from "react";
 import CommentCard from './CommentCard';
+import { fetchCommentsByArticleId } from "../../../api";
 
 const Comments = ({article_id}) => {
     const [comments, setComments] = useState([]);
 
-    api.get('/articles/' + article_id + '/comments')
-    .then((response) => {
-        setComments(response.data.comments);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+    useEffect(() => {
+        if(article_id) {
+            fetchCommentsByArticleId(article_id)
+            .then((responseComments) => {
+                setComments(responseComments);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        }
+    }, [article_id]);
 
     return (
         <section>

@@ -1,17 +1,19 @@
-import { useState } from "react";
-import api from "../../../api";
+import { useState, useEffect } from "react";
+import { fetchArticles } from "../../../api";
 import ArticleCard from "./ArticleCard";
 
 const ArticlesView = () => {
     const [articles, setArticles] = useState([]);
 
-    api.get('/articles?sort_by=comment_count')
-    .then((response) => {
-        setArticles(response.data.articles);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+    useEffect(() => {
+        fetchArticles()
+        .then((responseArticles) => {
+            setArticles(responseArticles);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }, []);
 
     return (
         <section>
