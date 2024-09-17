@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Comments from './Comments';
 import { fetchArticleById } from "../../../api";
+import VotesSection from './VotesSection';
 
 const ArticleView = () => {
     const { article_id } = useParams();
@@ -22,6 +23,7 @@ const ArticleView = () => {
             <h1>{article.title}</h1>
             <h2>by {article.author}</h2>
             <img src={article.article_img_url} alt="article image"/>
+            <VotesSection article={article}/>
             <p>{article.body}</p>
             <hr/>
             <h3>Comments</h3>
