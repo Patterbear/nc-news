@@ -3,6 +3,12 @@
   text-align: center;
 }
 
+#nc-logo {
+  width: 100px;
+  height: 100px;
+  margin-top: 1rem;
+}
+
 .home-link {
   color: white;
 }
