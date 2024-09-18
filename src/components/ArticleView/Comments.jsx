@@ -6,7 +6,7 @@ import CommentEntry from './CommentEntry';
 const Comments = ({ article_id }) => {
     const [comments, setComments] = useState([]);
 
-    const loadComments = () => {
+    const refreshComments = () => {
         if (article_id) {
             fetchCommentsByArticleId(article_id)
                 .then((responseComments) => {
@@ -19,18 +19,18 @@ const Comments = ({ article_id }) => {
     };
 
     useEffect(() => {
-        loadComments();
+        refreshComments();
     }, [article_id]);
 
     return (
         <section>
-            <CommentEntry article_id={article_id} onCommentPosted={loadComments} />
+            <CommentEntry article_id={article_id} refreshComments={refreshComments} />
             {(() => {
                 if (comments.length === 0) {
                     return <p>No comments yet.</p>;
                 } else {
                     return comments.map((comment) => (
-                        <CommentCard comment={comment} key={comment.comment_id} hasDeleteButton={comment.author === 'cooljmessy'} onCommentDeleted={loadComments}/>
+                        <CommentCard comment={comment} key={comment.comment_id} hasDeleteButton={comment.author === 'cooljmessy'} refreshComments={refreshComments}/>
                     ));
                 }
             })()}

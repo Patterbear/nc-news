@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { postCommentByArticleId } from '../../../api';
 
-const CommentEntry = ({ article_id, onCommentPosted }) => {
+const CommentEntry = ({ article_id, refreshComments }) => {
     const [userComment, setUserComment] = useState('');
 
     function handlePostComment() {
@@ -11,7 +11,7 @@ const CommentEntry = ({ article_id, onCommentPosted }) => {
         })
         .then(() => {
             setUserComment('');
-            onCommentPosted();
+            refreshComments();
         })
         .catch(err => {
             console.error('Failed to post comment:', err);
@@ -20,7 +20,7 @@ const CommentEntry = ({ article_id, onCommentPosted }) => {
 
     return (
         <section>
-            <p>Add comment:</p>
+            <p>Post comment as cooljmessy:</p>
             <input
                 id="comment-entry"
                 value={userComment}

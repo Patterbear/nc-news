@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { removeCommentById } from "../../../api";
 
-const CommentCard = ({ comment, hasDeleteButton, onCommentDeleted }) => {
+const CommentCard = ({ comment, hasDeleteButton, refreshComments }) => {
     const [deleteButtonPressed, setDeleteButtonPressed] = useState(false);
 
     function handleDeleteComment() {
         setDeleteButtonPressed(true);
         removeCommentById(comment.comment_id)
         .then(() => {
-            onCommentDeleted();
+            refreshComments();
         })
     }
 
