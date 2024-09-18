@@ -4,8 +4,12 @@ const api = axios.create({
     baseURL: 'https://nc-news-ch8f.onrender.com/api'
 });
 
-export const fetchArticles = () => {
-    return api.get('/articles')
+export const fetchArticles = (topic) => {
+    return api.get('/articles', {
+        params: {
+            topic: topic
+        }
+    })
         .then((response) => {
             return response.data.articles;
         });
@@ -35,4 +39,11 @@ export const postCommentByArticleId = (article_id, comment) => {
 
 export const removeCommentById = (comment_id) => {
     return api.delete(`/comments/${comment_id}`);
+}
+
+export const fetchTopics = () => {
+    return api.get('/topics')
+        .then((response) => {
+            return response.data.topics;
+        });
 }
