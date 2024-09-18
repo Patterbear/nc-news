@@ -19,7 +19,7 @@ const CommentEntry = ({ article_id, onCommentPosted }) => {
     }
 
     return (
-        <div>
+        <section>
             <p>Add comment:</p>
             <input
                 id="comment-entry"
@@ -27,7 +27,7 @@ const CommentEntry = ({ article_id, onCommentPosted }) => {
                 onChange={(e) => setUserComment(e.target.value)}
             />
             <button onClick={handlePostComment}>Post</button>
-        </div>
+        </section>
     );
 };
 
