@@ -25,13 +25,15 @@ const Comments = ({ article_id }) => {
     return (
         <section>
             <CommentEntry article_id={article_id} onCommentPosted={loadComments} />
-            {comments.length === 0 ? (
-                <p>No comments yet.</p>
-            ) : (
-                comments.map((comment) => (
-                    <CommentCard comment={comment} key={comment.comment_id} />
-                ))
-            )}
+            {(() => {
+                if (comments.length === 0) {
+                    return <p>No comments yet.</p>;
+                } else {
+                    return comments.map((comment) => (
+                        <CommentCard comment={comment} key={comment.comment_id} hasDeleteButton={comment.author === 'cooljmessy'} onCommentDeleted={loadComments}/>
+                    ));
+                }
+            })()}
         </section>
     );
 };
