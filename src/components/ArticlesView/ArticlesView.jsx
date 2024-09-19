@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { fetchArticles } from '../../../api';
 import ArticleCard from './ArticleCard';
 import TopicsBar from './TopicsBar';
-import { useParams } from 'react-router-dom';
 import SortByDropdown from './SortByDropdown';
 import OrderDropdown from './OrderDropdown';
 import ErrorPage from '../ErrorPage/ErrorPage';
@@ -10,44 +10,51 @@ import ErrorPage from '../ErrorPage/ErrorPage';
 const ArticlesView = () => {
     const [articles, setArticles] = useState([]);
     const [currentTopic, setCurrentTopic] = useState(null);
-    const [order, setOrder] = useState(null);
-    const [sortedBy, setSortedBy] = useState(null);
     const [error, setError] = useState(null);
-
     const { topic_slug } = useParams();
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const sort_by = searchParams.get('sort_by') || 'created_at';
+    const order = searchParams.get('order') || 'desc';
 
     useEffect(() => {
-        fetchArticles(currentTopic, sortedBy, order)
+        fetchArticles(currentTopic, sort_by, order)
             .then((responseArticles) => {
                 setArticles(responseArticles);
             })
             .catch((err) => {
                 setError(err);
             });
-    }, [currentTopic, order, sortedBy]);
+    }, [currentTopic, sort_by, order]);
 
     useEffect(() => {
-        if(topic_slug !== null && topic_slug !== 'all') {
+        if (topic_slug && topic_slug !== 'all') {
             setCurrentTopic(topic_slug);
         } else {
             setCurrentTopic(null);
         }
     }, [topic_slug]);
 
-    if(error) {
-        return (
-            <ErrorPage errorMessage={'Topic does not exist'}/>
-        );
+    const handleSelectSortBy = (newSortBy) => {
+        setSearchParams({ sort_by: newSortBy, order });
+    };
+
+    const handleSelectOrder = (newOrder) => {
+        setSearchParams({ sort_by, order: newOrder });
+    };
+
+    if (error) {
+        return <ErrorPage errorMessage={'Topic does not exist'} />;
     }
 
     return (
         <section>
             <TopicsBar />
-            <SortByDropdown setSortedBy={setSortedBy}/>
-            <OrderDropdown setOrder={setOrder}/>
-            {articles.map((article) => {
-                return <ArticleCard article={article} key={article.article_id} />;
-            })}
+            <SortByDropdown handleSelectSortBy={handleSelectSortBy} />
+            <OrderDropdown handleSelectOrder={handleSelectOrder} />
+            {articles.map((article) => (
+                <ArticleCard article={article} key={article.article_id} />
+            ))}
         </section>
     );
 };

@@ -1,6 +1,6 @@
-const SortByDropdown = ({setSortedBy}) => {
+const SortByDropdown = ({handleSelectSortBy}) => {
     function handleSelection(event) {
-        setSortedBy(event.target.value);
+        handleSelectSortBy(event.target.value);
     }
 
     return (

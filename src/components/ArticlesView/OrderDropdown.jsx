@@ -1,6 +1,6 @@
-const OrderDropdown = ({setOrder}) => {
+const OrderDropdown = ({handleSelectOrder}) => {
     function handleSelection(event) {
-        setOrder(event.target.value);
+        handleSelectOrder(event.target.value);
     }
 
     return (

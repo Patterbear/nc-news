@@ -9,9 +9,9 @@ const ArticleCard = ({article}) => {
                 <h3>By {article.author}</h3>
             </div>
             <div>
-                <h3>{new Date(article.created_at).toLocaleDateString('en-GB')}</h3>
-                <h3>Votes: {article.votes}</h3>
-                <h3>Comments: {article.comment_count}</h3>
+                <h4>{new Date(article.created_at).toLocaleDateString('en-GB')}</h4>
+                <h4>Votes: {article.votes}</h4>
+                <h4>Comments: {article.comment_count}</h4>
             </div>
         </Link>
     );
