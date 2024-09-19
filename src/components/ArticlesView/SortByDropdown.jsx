@@ -10,17 +10,11 @@ const SortByDropdown = ({setSortedBy}) => {
                 <option value="created_at">
                     date
                 </option>
-                <option value="article_id">
-                    article ID
-                </option>
-                <option value="author">
-                    author
+                <option value="comment_count">
+                    comments
                 </option>
                 <option value="votes">
                     votes
-                </option>
-                <option value="comment_count">
-                    comments
                 </option>
             </select>
         </div>
