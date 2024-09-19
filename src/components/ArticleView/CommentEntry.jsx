@@ -10,6 +10,11 @@ const CommentEntry = ({ article_id, refreshComments }) => {
             return;
         }
 
+        if(userComment.length > 200) {
+            document.getElementById('comment-post-error').innerText = 'Comment must be less than 200 characters';
+            return;
+        }
+
         postCommentByArticleId(article_id, {
             username: 'cooljmessy',
             body: userComment,
