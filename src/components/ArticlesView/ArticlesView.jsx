@@ -49,9 +49,13 @@ const ArticlesView = () => {
 
     return (
         <section>
-            <TopicsBar />
-            <SortByDropdown handleSelectSortBy={handleSelectSortBy} />
-            <OrderDropdown handleSelectOrder={handleSelectOrder} />
+            <div id="filter-section">
+                <TopicsBar id="topics-bar"/>
+                <div id="dropdown-section">
+                    <SortByDropdown handleSelectSortBy={handleSelectSortBy} />
+                    <OrderDropdown handleSelectOrder={handleSelectOrder} />
+                </div>
+            </div>
             {articles.map((article) => (
                 <ArticleCard article={article} key={article.article_id} />
             ))}

@@ -16,7 +16,7 @@ const CommentCard = ({ comment, hasDeleteButton, refreshComments }) => {
         <div className="comment-card">
             <p><b>{comment.author}</b>: {comment.body}</p>
             {hasDeleteButton ? (
-                <button onClick={handleDeleteComment} disabled={deleteButtonPressed}>Delete</button>
+                <button className="delete-button" onClick={handleDeleteComment} disabled={deleteButtonPressed}>Delete</button>
             ) : null}
         </div>
     );

@@ -3,13 +3,17 @@
   text-align: center;
 }
 
+#header {
+  display: flex;
+}
+
 #nc-logo {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   margin-top: 1rem;
 }
 
-.home-link {
+#home-link {
   color: white;
 }
 
@@ -24,6 +28,10 @@
   color: white;
   background-color: #3b3b3b;
   border-radius: 25px;
+}
+
+.article-card:hover {
+  color: white;
 }
 
 .article-card img {
@@ -54,20 +62,42 @@
   padding: 5px;
 }
 
-.topic-button, button {
+.topic-button {
   background-color: black;
   border: 2px solid black;
   border-radius: 5px;
   color: white;
   padding: 8px 16px;
-  margin: 10px;
+  margin-left: 10px;
   cursor: pointer;
 }
 
-.dropdown {
-  margin: 10px;
+.delete-button {
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 6px;
+  margin-right: 10px;
+  height: 40px;
+}
+
+#filter-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dropdown-section {
+  display: flex;
+  gap: 10px;
+  text-align: left;
 }
 
 #comment-post-error {
   color:red;
+}
+
+#topics-bar {
+  margin-left: auto;
+  display: flex;
 }
