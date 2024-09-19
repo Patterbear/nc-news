@@ -3,7 +3,6 @@ import { postCommentByArticleId } from '../../../api';
 
 const CommentEntry = ({ article_id, refreshComments }) => {
     const [userComment, setUserComment] = useState('');
-    const [error, setError] = useState(null);
 
     function handlePostComment() {
         if (userComment.length === 0) {
