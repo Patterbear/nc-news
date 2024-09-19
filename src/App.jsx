@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import ArticlesView from './components/ArticlesView/ArticlesView';
 import ArticleView from './components/ArticleView/ArticleView';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 
 function App() {
 
@@ -26,6 +27,12 @@ function App() {
           path="/article/:article_id"
           element={
             <ArticleView/>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <ErrorPage errorMessage={'Page not found'}/>
           }
         />
       </Routes>

@@ -8,7 +8,11 @@ const ArticleCard = ({article}) => {
                 <h2><b>{article.title}</b></h2>
                 <h3>By {article.author}</h3>
             </div>
-            <h3>Comments: {article.comment_count}</h3>
+            <div>
+                <h3>{new Date(article.created_at).toLocaleDateString('en-GB')}</h3>
+                <h3>Votes: {article.votes}</h3>
+                <h3>Comments: {article.comment_count}</h3>
+            </div>
         </Link>
     );
 }
