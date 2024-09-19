@@ -17,6 +17,12 @@ function App() {
           }
         />
         <Route
+          path="/topic/:topic_slug"
+          element={
+            <ArticlesView />
+          }
+        />
+        <Route
           path="/article/:article_id"
           element={
             <ArticleView/>

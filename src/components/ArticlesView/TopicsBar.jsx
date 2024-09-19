@@ -1,10 +1,12 @@
-const TopicsBar = ({ topics, selectTopic }) => {
+import { Link } from "react-router-dom";
+
+const TopicsBar = ({ topics }) => {
     return (
         <div>
-            <button onClick={() => selectTopic()}>all</button>
+            <Link to={"/topic/all"} className="topic-button">all</Link>
             {topics.map((topic, index) => {
                 return (
-                    <button key={index} onClick={() => selectTopic(topic.slug)}>{topic.slug}</button>
+                    <Link key={index} to={`/topic/${topic.slug}`} className="topic-button">{topic.slug}</Link>
                 );
             })}
         </div>
