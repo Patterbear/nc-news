@@ -1,25 +1,14 @@
 import { useState, useEffect } from 'react';
-import { fetchArticles, fetchTopics } from '../../../api';
+import { fetchArticles } from '../../../api';
 import ArticleCard from './ArticleCard';
 import TopicsBar from './TopicsBar';
 import { useParams } from 'react-router-dom';
 
 const ArticlesView = () => {
     const [articles, setArticles] = useState([]);
-    const [topics, setTopics] = useState([]);
     const [currentTopic, setCurrentTopic] = useState(null);
 
     const { topic_slug } = useParams();
-
-    useEffect(() => {
-        fetchTopics()
-            .then((responseTopics) => {
-                setTopics(responseTopics);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
 
     useEffect(() => {
         fetchArticles(currentTopic)
@@ -41,7 +30,7 @@ const ArticlesView = () => {
 
     return (
         <section>
-            <TopicsBar topics={topics} />
+            <TopicsBar />
             {articles.map((article) => {
                 return <ArticleCard article={article} key={article.article_id} />;
             })}
