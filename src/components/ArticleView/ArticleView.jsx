@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import Comments from './Comments';
 import { fetchArticleById } from "../../../api";
 import VotesSection from './VotesSection';
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 const ArticleView = () => {
     const { article_id } = useParams();
     const [article, setArticle] = useState({});
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetchArticleById(article_id)
@@ -14,9 +16,13 @@ const ArticleView = () => {
             setArticle(responseArticle);
         })
         .catch((err) => {
-            console.log(err);
+            setError(err);
         });
     }, []);
+
+    if(error) {
+        return <ErrorPage errorMessage={'Article not found'}/>
+    }
 
     return (
         <article>
