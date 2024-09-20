@@ -9,6 +9,9 @@ body {
 
 #header {
   display: flex;
+  background-color: #2b2a33;
+  padding: 20px;
+  border-radius: 30px;
 }
 
 #nc-logo {
@@ -30,7 +33,7 @@ body {
   width: 100%;
   box-sizing: border-box;
   color: white;
-  background-color: #3b3b3b;
+  background-color: #52525e;
   border-radius: 25px;
 }
 
@@ -104,8 +107,4 @@ body {
 #topics-bar {
   margin-left: auto;
   display: flex;
-}
-
-label {
-  color: white;
 }
