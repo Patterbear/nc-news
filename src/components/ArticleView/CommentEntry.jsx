@@ -37,7 +37,7 @@ const CommentEntry = ({ article_id, refreshComments }) => {
                 value={userComment}
                 onChange={(e) => setUserComment(e.target.value)}
             />
-            <p id="comment-post-error"></p>
+            <p id="comment-post-error" className="error"></p>
             <button onClick={handlePostComment}>Post</button>
         </section>
     );
