@@ -35,7 +35,7 @@ const ArticleView = () => {
         <article>
             <h1>{article.title}</h1>
             <h2>by {article.author}</h2>
-            <img src={article.article_img_url} alt="article image"/>
+            <img className="article-image" src={article.article_img_url} alt="article image"/>
             <VotesSection article={article}/>
             <p>{article.body}</p>
             <hr/>

@@ -114,6 +114,10 @@ h1, h2, h3, h4, p {
   color: white;
 }
 
+.article-image {
+  width: 80%;
+}
+
 
 @media (max-width: 768px) {
   #root {
