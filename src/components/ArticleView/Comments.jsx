@@ -36,18 +36,20 @@ const Comments = ({ article_id }) => {
     }
 
     return (
-        <section>
-            <CommentEntry article_id={article_id} refreshComments={refreshComments} />
-            {(() => {
-                if (comments.length === 0) {
-                    return <p>No comments yet.</p>;
-                } else {
-                    return comments.map((comment) => (
-                        <CommentCard comment={comment} key={comment.comment_id} hasDeleteButton={comment.author === 'cooljmessy'} refreshComments={refreshComments}/>
-                    ));
-                }
-            })()}
-        </section>
+        <div>
+            <CommentEntry article_id={article_id} refreshComments={refreshComments} id="comment-entry" />
+            <section id="comments">
+                {(() => {
+                    if (comments.length === 0) {
+                        return <p>No comments yet.</p>;
+                    } else {
+                        return comments.map((comment) => (
+                            <CommentCard comment={comment} key={comment.comment_id} hasDeleteButton={comment.author === 'cooljmessy'} refreshComments={refreshComments}/>
+                        ));
+                    }
+                })()}
+            </section>
+        </div>
     );
 };
 

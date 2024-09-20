@@ -56,14 +56,13 @@ body {
 .comment-card {
   text-align: left;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  padding: 5px;
   display: flex;
+  max-width: 80%;
 }
 
 #comment-entry {
-  text-align: left;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  padding: 5px;
+  max-width: fit-content;
+  height: 2rem;
 }
 
 .topic-button {
@@ -118,6 +117,11 @@ h1, h2, h3, h4, p {
   width: 80%;
 }
 
+#comments {
+  margin-left: 10%;
+  width: 90%;
+}
+
 
 @media (max-width: 768px) {
   #root {
@@ -135,7 +139,7 @@ h1, h2, h3, h4, p {
     height: 50px;
   }
 
-  #home-link h1 {
+  h1 {
     font-size: 1.5rem;
     margin-top: 0.5rem;
   }
@@ -183,5 +187,10 @@ h1, h2, h3, h4, p {
     justify-content: center;
     width: 100%;
     margin-top: 10px;
+  }
+
+  #comment-entry {
+    max-width: fit-content;
+    max-height: fit-content;
   }
 }
