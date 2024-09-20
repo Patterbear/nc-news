@@ -3,6 +3,10 @@
   text-align: center;
 }
 
+body {
+  color: #2b2a33;
+}
+
 #header {
   display: flex;
 }
@@ -100,4 +104,8 @@
 #topics-bar {
   margin-left: auto;
   display: flex;
+}
+
+label {
+  color: white;
 }
