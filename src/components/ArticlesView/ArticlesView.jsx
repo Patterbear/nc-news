@@ -6,6 +6,7 @@ import TopicsBar from './TopicsBar';
 import SortByDropdown from './SortByDropdown';
 import OrderDropdown from './OrderDropdown';
 import ErrorPage from '../ErrorPage/ErrorPage';
+import LoadingImage from '../../assets/loading.gif';
 
 const ArticlesView = () => {
     const [articles, setArticles] = useState([]);
@@ -13,6 +14,7 @@ const ArticlesView = () => {
     const [error, setError] = useState(null);
     const { topic_slug } = useParams();
     const [searchParams, setSearchParams] = useSearchParams();
+    const [isLoading, setIsLoading] = useState(true);
 
     const sort_by = searchParams.get('sort_by') || 'created_at';
     const order = searchParams.get('order') || 'desc';
@@ -21,6 +23,7 @@ const ArticlesView = () => {
         fetchArticles(currentTopic, sort_by, order)
             .then((responseArticles) => {
                 setArticles(responseArticles);
+                setIsLoading(false);
             })
             .catch((err) => {
                 setError(err);
@@ -45,6 +48,10 @@ const ArticlesView = () => {
 
     if (error) {
         return <ErrorPage errorMessage={'Topic does not exist'} />;
+    }
+
+    if(isLoading) {
+        return <img src={LoadingImage}/>
     }
 
     return (

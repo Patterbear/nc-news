@@ -4,16 +4,19 @@ import Comments from './Comments';
 import { fetchArticleById } from "../../../api";
 import VotesSection from './VotesSection';
 import ErrorPage from "../ErrorPage/ErrorPage";
+import LoadingImage from '../../assets/loading.gif';
 
 const ArticleView = () => {
     const { article_id } = useParams();
     const [article, setArticle] = useState({});
     const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetchArticleById(article_id)
         .then((responseArticle) => {
             setArticle(responseArticle);
+            setIsLoading(false);
         })
         .catch((err) => {
             setError(err);
@@ -22,6 +25,10 @@ const ArticleView = () => {
 
     if(error) {
         return <ErrorPage errorMessage={'Article not found'}/>
+    }
+
+    if(isLoading) {
+        return <img src={LoadingImage}/>
     }
 
     return (
