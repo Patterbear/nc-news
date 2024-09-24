@@ -12,7 +12,7 @@ A deployed version of this app can be accessed [here](https://patterbear-nc-news
 
 The back end repository for this application can be found [here](https://github.com/Patterbear/be-nc-news).
 
-The hosted API that this application interacts with can be directly accessed [here](https://nc-news-ch8f-onrender.com/api).
+The hosted API that this application interacts with can be directly accessed [here](https://nc-news-ch8f.onrender.com/api).
 
 ## Running locally
 
